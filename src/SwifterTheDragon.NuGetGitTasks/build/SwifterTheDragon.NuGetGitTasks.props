@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->
+<!-- SPDX-License-Identifier: MIT -->
+<Project>
+    <PropertyGroup>
+        <_NuGetGitTasks_TaskFolder>$(MSBuildThisFileDirectory)..\tasks\netstandard2.0</_NuGetGitTasks_TaskFolder>
+        <CustomTasksAssembly>$(_NuGetGitTasks_TaskFolder)\$(MSBuildThisFileName).dll</CustomTasksAssembly>
+    </PropertyGroup>
+    <UsingTask TaskName="SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask" AssemblyFile="$(CustomTasksAssembly)" />
+    <PropertyGroup>
+        <UnknownHeadLabel Condition="'$(UnknownHeadLabel)' == ''">-UNKNOWN-HEAD-</UnknownHeadLabel>
+        <InvalidHeadLabel Condition="'$(InvalidHeadLabel)' == ''">-INVALID-HEAD-</InvalidHeadLabel>
+        <DetachedHeadLabel Condition="'$(DetachedHeadLabel)' == ''">-DETACHED-HEAD-</DetachedHeadLabel>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->
+<!-- SPDX-License-Identifier: MIT -->
+<Assembly name="SwifterTheDragon.NuGetGitTasks">
+    <Description>
+        <summary>
+            Automatically populates the &lt;RepositoryRoot&gt; property with the current Git branch name.
+        </summary>
+    </Description>
+    <Namespace name="Core">
+        <Description>
+            <sumary>
+                Provides miscellaneous functionality.
+            </sumary>
+        </Description>
+        <Type name="NuGetGitBranchTask">
+            <Description>
+                <summary>
+                    Automatically populates the <c>&lt;RepositoryRoot&gt;</c> property with the current Git branch name.
+                </summary>
+            </Description>
+            <Field name="k_DefaultUnknownHeadLabel">
+                <summary>
+                    The default unknown <c>HEAD</c> state label.
+                </summary>
+            </Field>
+            <Field name="k_DefaultInvalidHeadLabel">
+                <summary>
+                    The default invalid <c>HEAD</c> state label.
+                </summary>
+            </Field>
+            <Field name="k_DefaultDetachedHeadLabel">
+                <summary>
+                    The default detached <c>HEAD</c> state label.
+                </summary>
+            </Field>
+            <Field name="i_unknownHeadLabel">
+                <summary>
+                    The backing store for <c><see cref="UnknownHeadLabel" /></c>.
+                </summary>
+            </Field>
+            <Property name="UnknownHeadLabel">
+                <summary>
+                    Gets, and sets the unknown <c>HEAD</c> state label.
+                </summary>
+                <remarks>
+                    This property is an input for the custom MSBuild task. Use this to specify how an unknown <c>HEAD</c> state should be represented.
+                </remarks>
+                <value>
+                    The unknown <c>HEAD</c> state label.
+                </value>
+            </Property>
+            <Field name="i_invalidHeadLabel">
+                <summary>
+                    The backing store for <c><see cref="InvalidHeadLabel" /></c>.
+                </summary>
+            </Field>
+            <Property name="InvalidHeadLabel">
+                <summary>
+                    Gets, and sets the invalid <c>HEAD</c> state label.
+                </summary>
+                <remarks>
+                    This property is an input for the custom MSBuild task. Use this to specify how an invalid <c>HEAD</c> state should be represented.
+                </remarks>
+                <value>
+                    The invalid <c>HEAD</c> state label.
+                </value>
+            </Property>
+            <Field name="i_detachedHeadLabel">
+                <summary>
+                    The backing store for <c><see cref="DetachedHeadLabel" /></c>.
+                </summary>
+            </Field>
+            <Property name="DetachedHeadLabel">
+                <summary>
+                    Gets, and sets the detached <c>HEAD</c> state label.
+                </summary>
+                <remarks>
+                    This property is an input for the custom MSBuild task. Use this to specify how a detached <c>HEAD</c> state should be represented.
+                </remarks>
+                <value>
+                    The detached <c>HEAD</c> state label.
+                </value>
+            </Property>
+            <Field name="i_parsedGitBranchName">
+                <summary>
+                    The backing store for <c><see cref="ParsedGitBranchName" /></c>.
+                </summary>
+            </Field>
+            <Property name="ParsedGitBranchName">
+                <summary>
+                    Gets the parsed Git branch name.
+                </summary>
+                <remarks>
+                    This property is an output for the custom MSBuild task. Use this to populate your &lt;RepositoryRoot&gt; tag.
+                </remarks>
+                <value>
+                    The parsed Git branch name.
+                </value>
+            </Property>
+            <Property name="DebuggerDisplay">
+                <summary>
+                    Gets text representing how <c><see langword="this" /></c> should be displayed in debugger windows.
+                </summary>
+                <value>
+                    Text representing how <c><see langword="this" /></c> should be displayed in debugger windows.
+                </value>
+            </Property>
+            <Method name="Execute">
+                <inheritdoc />
+            </Method>
+            <Method name="ToString">
+                <inheritdoc />
+            </Method>
+            <Method name="SetGitBranchName">
+                <summary>
+                    Sets <c>
+                        <see cref="ParsedGitBranchName" />
+                    </c> to the output of <c>
+                        <see cref="FetchGitBranchName" />
+                    </c>.
+                </summary>
+            </Method>
+            <Method name="FetchGitBranchName">
+                <summary>
+                    Fetches the current <c>Git</c> branch name via command-line commands.
+                </summary>
+                <returns>
+                    The output of <c>git branch --show-current</c>, if successful. Otherwise, <c><see cref="GetCurrentDetachedHeadLabel" /></c> if <c>git describe --always</c> is successful. Otherwise, <c><see cref="GetCurrentInvalidHeadLabel" /></c> if <c>git --version</c> is successful. Otherwise, <c><see cref="GetCurrentUnknownHeadLabel" /></c>.
+                </returns>
+            </Method>
+            <Method name="RunCommandLineCommand(System.String)">
+                <summary>
+                    Executes a command via <c>cmd.exe</c>.
+                </summary>
+                <param name="commandToRun">
+                    The command to run.
+                </param>
+                <returns>
+                    The output of the command that was executed.
+                </returns>
+            </Method>
+            <Method name="GetCurrentDetachedHeadLabel">
+                <summary>
+                    Gets the current detached <c>HEAD</c> label.
+                </summary>
+                <remarks>
+                    This is different than <c><see cref="DetachedHeadLabel" /></c>, because a fallback constant is used in the event that an empty value was passed, to avoid visually empty output.
+                </remarks>
+                <returns>
+                    If <c><see cref="DetachedHeadLabel" /></c> is <c><see langword="null" /></c>, or white space, then <c><see cref="k_DefaultDetachedHeadLabel" /></c> is used. Otherwise, <c><see cref="DetachedHeadLabel" /></c>.
+                </returns>
+            </Method>
+            <Method name="GetCurrentInvalidHeadLabel">
+                <summary>
+                    Gets the current invalid <c>HEAD</c> label.
+                </summary>
+                <remarks>
+                    This is different than <c><see cref="InvalidHeadLabel" /></c>, because a fallback constant is used in the event that an empty value was passed, to avoid visually empty output.
+                </remarks>
+                <returns>
+                    If <c><see cref="InvalidHeadLabel" /></c> is <c><see langword="null" /></c>, or white space, then <c><see cref="k_DefaultInvalidHeadLabel" /></c> is used. Otherwise, <c><see cref="InvalidHeadLabel" /></c>.
+                </returns>
+            </Method>
+            <Method name="GetCurrentUnknownHeadLabel">
+                <summary>
+                    Gets the current unknown <c>HEAD</c> label.
+                </summary>
+                <remarks>
+                    This is different than <c><see cref="UnknownHeadLabel" /></c>, because a fallback constant is used in the event that an empty value was passed, to avoid visually empty output.
+                </remarks>
+                <returns>
+                    If <c><see cref="UnknownHeadLabel" /></c> is <c><see langword="null" /></c>, or white space, then <c><see cref="k_DefaultUnknownHeadLabel" /></c> is used. Otherwise, <c><see cref="UnknownHeadLabel" /></c>.
+                </returns>
+            </Method>
+        </Type>
+    </Namespace>
+</Assembly>

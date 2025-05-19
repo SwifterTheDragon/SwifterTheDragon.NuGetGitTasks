@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->
+<!-- SPDX-License-Identifier: MIT -->
+<Assembly name="SwifterTheDragon.NuGetGitTasks.SourceGenerator">
+    <Description>
+        <summary>
+            Source generates artifacts for custom MSBuild tasks to link to the incremental build pipeline.
+        </summary>
+    </Description>
+    <Namespace name="Core">
+        <Description>
+            <summary>
+                Provides miscellaneous functionality.
+            </summary>
+        </Description>
+        <Type name="GitBranchArtifactGenerator">
+            <Description>
+                <summary>
+                    Incrementally source generates an artifact for the <c>Git</c> branch task.
+                </summary>
+            </Description>
+            <Property name="HintName">
+                <summary>
+                    Gets the file name of the generated file for this generator.
+                </summary>
+                <value>
+                    The file name of the generated file for this generator.
+                </value>
+            </Property>
+            <Method name="Initialize">
+                <inheritdoc />
+            </Method>
+            <Method name="Transform(Microsoft.CodeAnalysis.Compilation,System.Threading.CancellationToken)">
+                <summary>
+                    Fetches a representation of the current <c>Git</c> branch.
+                </summary>
+                <param name="compilation">
+                    See <c><see cref="global::Microsoft.CodeAnalysis.Compilation" /></c>.
+                </param>
+                <param name="cancellationToken">
+                    See <c><see cref="global::System.Threading.CancellationToken" /></c>.
+                </param>
+                <returns>
+                    The output of <c>git branch --show-current</c>, if successful. Otherwise, <c>-DETACHED-HEAD-</c> if <c>git describe --always</c> is successful. Otherwise, <c>-INVALID-HEAD-</c> if <c>git --version</c> is successful. Otherwise, <c>-UNKNOWN-HEAD-</c>.
+                </returns>
+            </Method>
+            <Method name="ExecuteCommandLineCommand(System.String)">
+                <summary>
+                    Runs a command-line command, and returns the result.
+                </summary>
+                <param name="commandToRun">
+                    The command to be run.
+                </param>
+                <returns>
+                    The output of <c><paramref name="commandToRun" /></c>.
+                </returns>
+            </Method>
+            <Method name="RegisterOutput(Microsoft.CodeAnalysis.SourceProductionContext,System.String)">
+                <summary>
+                    Registers source code output of a single comment containing <c><paramref name="model" /></c>.
+                </summary>
+                <param name="context">
+                    See <c><see cref="global::Microsoft.CodeAnalysis.SourceProductionContext" /></c>.
+                </param>
+                <param name="model">
+                    The data provided by the pipeline.
+                </param>
+            </Method>
+        </Type>
+    </Namespace>
+</Assembly>

@@ -1,0 +1,52 @@
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->
+<!-- SPDX-License-Identifier: MIT -->
+<Project>
+    <PropertyGroup>
+        <!-- Do not add <AssemblyVersion> here. Each assembly should receive a unique assembly version. -->
+        <Company>SwifterTheDragon</Company>
+        <Copyright>Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved.</Copyright>
+        <!-- Do not add <Description> here. Each assembly should receive a unique description. -->
+        <!-- Do not add <FileVersion> here. Each assembly should receive a unique file version. -->
+        <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+        <InformationalVersion>0.10.0</InformationalVersion>
+        <Product>SwifterTheDragon.NuGetGitTasks</Product>
+        <Title>$(AssemblyName)</Title>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Authors>SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors</Authors>
+        <PackageProjectUrl>https://github.com/SwifterTheDragon/NuGetGitTasks</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/SwifterTheDragon/NuGetGitTasks</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="\" />
+    </ItemGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.CLSCompliantAttribute">
+            <_Parameter1>true</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Reflection.AssemblyDefaultAliasAttribute">
+            <_Parameter1>$(AssemblyName)</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.InteropServices.ComVisibleAttribute">
+            <_Parameter1>true</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Resources.NeutralResourcesLanguageAttribute">
+            <_Parameter1>en-001</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+    <PropertyGroup>
+        <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    </PropertyGroup>
+    <ItemGroup>
+        <AdditionalFiles Include="$(RepositoryRoot)SonarLint.xml" />
+        <AdditionalFiles Include="$(RepositoryRoot)CodeMetricsConfig.txt" />
+        <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+        <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+        <AdditionalFiles Include="InternalAPI.Shipped.txt" />
+        <AdditionalFiles Include="InternalAPI.Unshipped.txt" />
+    </ItemGroup>
+</Project>
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright SwifterTheDragon, and the SwifterTheDragon.NuGetGitTasks contributors, 2025. All Rights Reserved. -->
+<!-- SPDX-License-Identifier: MIT -->
+<Project>
+    <Target Name="BeforeCompile">
+        <SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask UnknownHeadLabel="$(UnknownHeadLabel)" InvalidHeadLabel="$(InvalidHeadLabel)" DetachedHeadLabel="$(DetachedHeadLabel)">
+            <Output TaskParameter="ParsedGitBranchName" PropertyName="RepositoryBranch" />
+        </SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask>
+    </Target>
+</Project>

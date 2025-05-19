@@ -1,0 +1,3 @@
+SwifterTheDragon.NuGetGitTasks.SourceGenerator.Core.GitBranchArtifactGenerator
+SwifterTheDragon.NuGetGitTasks.SourceGenerator.Core.GitBranchArtifactGenerator.GitBranchArtifactGenerator() -> void
+SwifterTheDragon.NuGetGitTasks.SourceGenerator.Core.GitBranchArtifactGenerator.Initialize(Microsoft.CodeAnalysis.IncrementalGeneratorInitializationContext context) -> void

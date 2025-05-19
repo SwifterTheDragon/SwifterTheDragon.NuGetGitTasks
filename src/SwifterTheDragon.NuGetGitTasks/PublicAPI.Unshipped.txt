@@ -1,0 +1,11 @@
+override SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.Execute() -> bool
+override SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.ToString() -> string
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.DetachedHeadLabel.get -> string
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.DetachedHeadLabel.set -> void
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.InvalidHeadLabel.get -> string
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.InvalidHeadLabel.set -> void
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.NuGetGitBranchTask() -> void
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.ParsedGitBranchName.get -> string
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.UnknownHeadLabel.get -> string
+SwifterTheDragon.NuGetGitTasks.Core.NuGetGitBranchTask.UnknownHeadLabel.set -> void
